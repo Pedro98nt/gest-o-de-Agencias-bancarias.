@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+	<title> lista geral</title>
+	</h:head>
+<h:body>
+<h:form>
+<p:commandLink value="CADASTRO BANCO" action="cadastroBanco.xhtml" immediate="true"/> |
+<p:commandLink value="CADASTRO AGENCIA" action="cadastroAgencia.xhtml" immediate="true"/> 
+<h1>lista geral</h1>
+<p:growl />
+<p:dataTable  border="1" value="#{agenciaControllerPedro.lista}"  var="agencia"  >
+
+<p:column>
+<f:facet name="header">
+<h:outputText value="id Agencia"  />
+</f:facet>
+<h:outputText value="#{agencia.id}" />
+</p:column>
+
+<p:column>
+<f:facet name="header">
+<h:outputText  value="nome Agencia" />
+</f:facet>
+<h:outputText value="#{agencia.nome}" />
+</p:column>
+
+<p:column>
+<f:facet name="header">
+<h:outputText  value="Codigo agencia" />
+</f:facet>
+<h:outputText value="#{agencia.codigo}" />
+</p:column>
+
+<p:column>
+<f:facet name="header">
+<h:outputText  value="digito agencia" />
+</f:facet>
+<h:outputText value="#{agencia.digito}" />
+</p:column>
+
+<p:column>
+<f:facet name="header">
+<h:outputText value="id banco" />
+</f:facet>
+<h:outputText value="#{agencia.banco.id}"  />
+</p:column>
+
+<p:column>
+<f:facet name="header">
+<h:outputText value="nome banco" />
+</f:facet>
+<h:outputText value="#{agencia.banco.nome}" />
+</p:column>
+
+<p:column>
+<f:facet name="header">
+<h:outputText value="codigo banco"  />
+</f:facet>
+<h:outputText value="#{agencia.banco.codigob}" />
+</p:column>
+
+<p:column>
+<f:facet name="header">
+<h:outputText value="cnpj"  />
+</f:facet>
+<h:outputText value="#{agencia.banco.cnpj}" />
+</p:column>
+
+<p:column>
+	<f:facet name="header">
+	<h:outputText value="Ação" />	
+	</f:facet>
+	<p:commandButton value="Editar"
+	action="#{agenciaControllerPedro.editar}" >
+	<f:setPropertyActionListener value="#{agencia}" target="#{agenciaControllerPedro.agencia}"/>
+	</p:commandButton>
+	<p:commandButton onclick="return confirm('Confirma a exclusão?');"
+	value="Excluir"  action="#{agenciaControllerPedro.excluir}" >
+	<f:setPropertyActionListener value="#{agencia}" target="#{agenciaControllerPedro.agencia}"/>
+	</p:commandButton>
+	</p:column>
+
+</p:dataTable>
+</h:form>
+</h:body>
+</html>
